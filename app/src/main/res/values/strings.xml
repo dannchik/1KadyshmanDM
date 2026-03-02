@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">KadyshmanDM</string>
+
+    <string name="title_text">Заполните данные</string>
+    <string name="image_desc">Изображение приложения</string>
+
+    <string name="hint_name">Введите имя</string>
+    <string name="hint_surname">Введите фамилию</string>
+    <string name="hint_group">Введите номер группы</string>
+    <string name="hint_age">Введите возраст</string>
+    <string name="hint_grade">Введите оценку</string>
+
+    <string name="btn_programmatic">Отправить (программно)</string>
+    <string name="btn_declarative">Отправить (декларативно)</string>
+    <string name="button_send">Отправить</string>
+
+    <string name="title_activity_display_message">Данные студента</string>
+    <string name="received_data">Полученные данные:</string>
+
+    <string name="key_name">com.example.kadyshmandm.NAME</string>
+    <string name="key_surname">com.example.kadyshmandm.SURNAME</string>
+    <string name="key_group">com.example.kadyshmandm.GROUP</string>
+    <string name="key_age">com.example.kadyshmandm.AGE</string>
+    <string name="key_grade">com.example.kadyshmandm.GRADE</string>
+</resources>
