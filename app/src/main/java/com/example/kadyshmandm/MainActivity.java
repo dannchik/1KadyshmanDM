@@ -41,36 +41,39 @@ public class MainActivity extends AppCompatActivity {
                 sendMessageDeclarative(v);
             }
         });
-    }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        Log.d(TAG, "onStart: Активность становится видимой");
-    }
+        findViewById(R.id.btnToLinear).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d(TAG, "onClick: Переход к LinearActivity");
+                Intent intent = new Intent(MainActivity.this, LinearActivity.class);
+                startActivity(intent);
+            }
+        });
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        Log.d(TAG, "onResume: Активность активна и готова к взаимодействию");
-    }
+        findViewById(R.id.btnStartChain).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, Activity1NameSurname.class);
+                startActivity(intent);
+            }
+        });
 
-    @Override
-    protected void onPause() {
-        super.onPause();
-        Log.d(TAG, "onPause: Активность приостановлена");
-    }
+        findViewById(R.id.btnStaticFragment).setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, StaticFragmentActivity.class);
+            startActivity(intent);
+        });
 
-    @Override
-    protected void onStop() {
-        super.onStop();
-        Log.d(TAG, "onStop: Активность остановлена и не видна");
-    }
+        findViewById(R.id.btnDynamicFragment).setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, DynamicFragmentActivity.class);
+            startActivity(intent);
+        });
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        Log.d(TAG, "onDestroy: Активность уничтожается");
+        findViewById(R.id.btnContainerViewFragment).setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, ContainerViewFragmentActivity.class);
+            startActivity(intent);
+        });
+
     }
 
     @Override
@@ -80,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void sendMessageProgrammatic(View view) {
-        Log.d(TAG, "sendMessageProgrammatic: Запуск перехода программно");
+        Log.d(TAG, "sendMessageProgrammatic: Запуск перехода с объектом Student");
 
         Intent intent = new Intent(this, DisplayMessageActivity.class);
 
@@ -90,28 +93,23 @@ public class MainActivity extends AppCompatActivity {
         EditText editAge = findViewById(R.id.editAge);
         EditText editGrade = findViewById(R.id.editGrade);
 
-        String name = editName.getText().toString().trim();
-        String surname = editSurname.getText().toString().trim();
-        String group = editGroup.getText().toString().trim();
-        String age = editAge.getText().toString().trim();
-        String grade = editGrade.getText().toString().trim();
+        Student student = new Student(
+                editName.getText().toString().trim(),
+                editSurname.getText().toString().trim(),
+                editGroup.getText().toString().trim(),
+                editAge.getText().toString().trim(),
+                editGrade.getText().toString().trim()
+        );
 
-        if (name.isEmpty() || surname.isEmpty()) {
-            Toast.makeText(this, "Введите имя и фамилию!", Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-        intent.putExtra(EXTRA_NAME, name);
-        intent.putExtra(EXTRA_SURNAME, surname);
-        intent.putExtra(EXTRA_GROUP, group);
-        intent.putExtra(EXTRA_AGE, age);
-        intent.putExtra(EXTRA_GRADE, grade);
+        intent.putExtra("STUDENT_OBJECT", student);
 
         startActivity(intent);
     }
 
+
+
     public void sendMessageDeclarative(View view) {
-        Log.d(TAG, "sendMessageDeclarative: Запуск перехода декларативно");
+        Log.d(TAG, "sendMessageDeclarative: Запуск перехода с объектом Student");
 
         Intent intent = new Intent(this, DisplayMessageActivity.class);
 
@@ -121,11 +119,22 @@ public class MainActivity extends AppCompatActivity {
         EditText editAge = findViewById(R.id.editAge);
         EditText editGrade = findViewById(R.id.editGrade);
 
-        intent.putExtra(EXTRA_NAME, editName.getText().toString().trim());
-        intent.putExtra(EXTRA_SURNAME, editSurname.getText().toString().trim());
-        intent.putExtra(EXTRA_GROUP, editGroup.getText().toString().trim());
-        intent.putExtra(EXTRA_AGE, editAge.getText().toString().trim());
-        intent.putExtra(EXTRA_GRADE, editGrade.getText().toString().trim());
+        Student student = new Student(
+                editName.getText().toString().trim(),
+                editSurname.getText().toString().trim(),
+                editGroup.getText().toString().trim(),
+                editAge.getText().toString().trim(),
+                editGrade.getText().toString().trim()
+        );
+        intent.putExtra("STUDENT_OBJECT", student);
+
+        findViewById(R.id.btnStartChain).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, Activity1NameSurname.class);
+                startActivity(intent);
+            }
+        });
 
         startActivity(intent);
     }

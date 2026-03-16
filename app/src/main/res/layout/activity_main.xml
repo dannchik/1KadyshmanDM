@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp"
+    android:background="@color/background_light"
     tools:context=".MainActivity">
 
     <TextView
@@ -15,17 +16,18 @@
         android:text="@string/title_text"
         android:textSize="24sp"
         android:textStyle="bold"
+        android:textColor="@color/text_primary"
         android:gravity="center"
         android:layout_marginBottom="16dp"/>
 
     <ImageView
         android:id="@+id/myImage"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
+        android:layout_width="150dp"
+        android:layout_height="125dp"
         android:src="@drawable/enot"
         android:contentDescription="@string/image_desc"
         android:layout_gravity="center"
-        android:layout_marginBottom="16dp"/>
+        android:layout_marginBottom="1dp"/>
 
     <EditText
         android:id="@+id/editName"
@@ -33,6 +35,8 @@
         android:layout_height="wrap_content"
         android:hint="@string/hint_name"
         android:inputType="textPersonName"
+        android:background="@color/input_background"
+        android:padding="12dp"
         android:layout_marginBottom="8dp"/>
 
     <EditText
@@ -41,6 +45,8 @@
         android:layout_height="wrap_content"
         android:hint="@string/hint_surname"
         android:inputType="textPersonName"
+        android:background="@color/input_background"
+        android:padding="12dp"
         android:layout_marginBottom="8dp"/>
 
     <EditText
@@ -49,6 +55,8 @@
         android:layout_height="wrap_content"
         android:hint="@string/hint_group"
         android:inputType="text"
+        android:background="@color/input_background"
+        android:padding="12dp"
         android:layout_marginBottom="8dp"/>
 
     <EditText
@@ -57,6 +65,8 @@
         android:layout_height="wrap_content"
         android:hint="@string/hint_age"
         android:inputType="number"
+        android:background="@color/input_background"
+        android:padding="12dp"
         android:layout_marginBottom="8dp"/>
 
     <EditText
@@ -65,6 +75,8 @@
         android:layout_height="wrap_content"
         android:hint="@string/hint_grade"
         android:inputType="numberDecimal"
+        android:background="@color/input_background"
+        android:padding="12dp"
         android:layout_marginBottom="16dp"/>
 
     <Button
@@ -73,12 +85,50 @@
         android:layout_height="wrap_content"
         android:text="@string/btn_programmatic"
         android:onClick="sendMessageProgrammatic"
+        android:backgroundTint="@color/primary_color"
+        android:textColor="@color/button_text"
         android:layout_marginBottom="8dp"/>
 
     <Button
         android:id="@+id/btnSendDeclarative"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/btn_declarative"/>
+        android:text="@string/btn_declarative"
+        android:backgroundTint="@color/secondary_color"
+        android:textColor="@color/text_primary"/>
+    <Button
+        android:id="@+id/btnToLinear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Перейти к LinearLayout"
+        android:backgroundTint="@color/primary_color"
+        android:textColor="@color/button_text"
+        android:layout_marginTop="14dp"/>
+    <Button
+        android:id="@+id/btnStartChain"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Начать цепочку (3 Activity)"
+        android:layout_marginTop="14dp"/>
+    <Button
+        android:id="@+id/btnStaticFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Фрагменты: Статически"
+        android:layout_marginTop="14dp"/>
+
+    <Button
+        android:id="@+id/btnDynamicFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Фрагменты: Динамически"
+        android:layout_marginTop="8dp"/>
+
+    <Button
+        android:id="@+id/btnContainerViewFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Фрагменты: FragmentContainerView"
+        android:layout_marginTop="8dp"/>
 
 </LinearLayout>

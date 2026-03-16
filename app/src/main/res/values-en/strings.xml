@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">KadyshmanDM</string>
+
+    <string name="title_text">Fill in your details</string>
+    <string name="image_desc">App image</string>
+
+    <string name="hint_name">Enter name</string>
+    <string name="hint_surname">Enter surname</string>
+    <string name="hint_group">Enter group number</string>
+    <string name="hint_age">Enter age</string>
+    <string name="hint_grade">Enter desired grade</string>
+
+    <string name="btn_programmatic">Send (programmatic)</string>
+    <string name="btn_declarative">Send (declarative)</string>
+    <string name="button_send">Send</string>
+
+    <string name="title_activity_display_message">Student Data</string>
+    <string name="received_data">Received data:</string>
+
+    <!-- Keys (не переводим, но оставляем для структуры) -->
+    <string name="key_name">com.example.kadyshmandm.NAME</string>
+    <string name="key_surname">com.example.kadyshmandm.SURNAME</string>
+    <string name="key_group">com.example.kadyshmandm.GROUP</string>
+    <string name="key_age">com.example.kadyshmandm.AGE</string>
+    <string name="key_grade">com.example.kadyshmandm.GRADE</string>
+</resources>

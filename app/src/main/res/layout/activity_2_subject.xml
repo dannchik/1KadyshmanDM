@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="@color/background_light">
+
+    <TextView
+        android:id="@+id/textNameSurname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Студент: "
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="16dp"/>
+
+    <EditText
+        android:id="@+id/editSubject"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Введите предмет"
+        android:padding="12dp"
+        android:background="@color/input_background"
+        android:layout_marginBottom="16dp"/>
+
+    <Button
+        android:id="@+id/btnToActivity3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Ввести информацию →"
+        android:backgroundTint="@color/primary_color"
+        android:layout_marginBottom="16dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Результат:"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="8dp"/>
+
+    <TextView
+        android:id="@+id/textResult"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Ожидание данных..."
+        android:textSize="16sp"
+        android:lineSpacingExtra="4dp"/>
+
+</LinearLayout>

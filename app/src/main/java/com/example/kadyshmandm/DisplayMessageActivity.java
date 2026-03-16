@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
+import com.example.kadyshmandm.Student;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -19,24 +20,19 @@ public class DisplayMessageActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_display_message);
 
-        Intent intent = getIntent();
-
-        String name = intent.getStringExtra(MainActivity.EXTRA_NAME);
-        String surname = intent.getStringExtra(MainActivity.EXTRA_SURNAME);
-        String group = intent.getStringExtra(MainActivity.EXTRA_GROUP);
-        String age = intent.getStringExtra(MainActivity.EXTRA_AGE);
-        String grade = intent.getStringExtra(MainActivity.EXTRA_GRADE);
+        Student student = (Student) getIntent().getSerializableExtra("STUDENT_OBJECT");
 
         TextView resultText = findViewById(R.id.resultText);
 
-        String result = "ФИО: " + surname + " " + name + "\n" +
-                "Группа: " + (group.isEmpty() ? "не указана" : group) + "\n" +
-                "Возраст: " + (age.isEmpty() ? "не указан" : age) + "\n" +
-                "Желаемая оценка: " + (grade.isEmpty() ? "не указана" : grade);
+        if (student != null) {
 
-        resultText.setText(result);
-
-        Toast.makeText(this, "Данные получены!", Toast.LENGTH_SHORT).show();
+            resultText.setText(student.getFullInfo());
+            Toast.makeText(this, "Данные получены: " + student.getName(), Toast.LENGTH_SHORT).show();
+            Log.d(TAG, "Получен студент: " + student.getName() + " " + student.getSurname());
+        } else {
+            resultText.setText("❌ Ошибка: данные не получены");
+            Log.e(TAG, "onCreate: Объект Student равен null!");
+        }
     }
 
     @Override

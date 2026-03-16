@@ -13,6 +13,33 @@
         android:theme="@style/Theme.KadyshmanDM"
         tools:targetApi="31">
         <activity
+            android:name=".ContainerViewFragmentActivity"
+            android:exported="false" />
+        <activity
+            android:name=".DynamicFragmentActivity"
+            android:exported="false" />
+        <activity
+            android:name=".StaticFragmentActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activity3Time"
+            android:exported="false" />
+        <activity
+            android:name=".Activity2Subject"
+            android:exported="false" />
+        <activity
+            android:name=".Activity1NameSurname"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".DisplayMessageActivity"
             android:exported="false"
             android:label="@string/title_activity_display_message"
@@ -22,15 +49,45 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
-
         <activity
-            android:name=".MainActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            android:name=".LinearActivity"
+            android:exported="false"
+            android:label="LinearLayout"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/Theme.KadyshmanDM">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+        <activity
+            android:name=".RelativeActivity"
+            android:exported="false"
+            android:label="RelativeLayout"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/Theme.KadyshmanDM">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+        <activity
+            android:name=".ConstraintActivity"
+            android:exported="false"
+            android:label="ConstraintLayout"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/Theme.KadyshmanDM">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+        <activity
+            android:name=".FrameActivity"
+            android:exported="false"
+            android:label="FrameLayout"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/Theme.KadyshmanDM">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
         </activity>
     </application>
 

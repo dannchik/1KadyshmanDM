@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_light">
+
+    <ImageView
+        android:id="@+id/imageFrameBg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/enot"
+        android:scaleType="centerCrop"
+        android:alpha="0.3"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:layout_gravity="center">
+
+        <TextView
+            android:id="@+id/titleFrame"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="FrameLayout"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_marginBottom="12dp"
+            android:textColor="@color/text_primary"/>
+
+        <EditText
+            android:id="@+id/editFrame"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Введите текст"
+            android:padding="12dp"
+            android:background="@color/input_background"
+            android:layout_marginBottom="8dp"/>
+
+        <Button
+            android:id="@+id/btnFrame"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Готово"
+            android:backgroundTint="@color/primary_color"/>
+
+    </LinearLayout>
+
+</FrameLayout>
