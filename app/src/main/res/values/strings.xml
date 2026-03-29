@@ -22,6 +22,8 @@
     <string name="key_group">com.example.kadyshmandm.GROUP</string>
     <string name="key_age">com.example.kadyshmandm.AGE</string>
     <string name="key_grade">com.example.kadyshmandm.GRADE</string>
+    <string name="drawer_open">Открыть меню</string>
+    <string name="drawer_close">Закрыть меню</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

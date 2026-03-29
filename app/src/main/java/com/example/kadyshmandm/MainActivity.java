@@ -35,6 +35,36 @@ public class MainActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
 
+        findViewById(R.id.btnScrollView).setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, ScrollViewActivity.class);
+            startActivity(intent);
+        });
+
+        findViewById(R.id.btnCategoryList).setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, CategoryActivity.class);
+            startActivity(intent);
+        });
+
+        findViewById(R.id.btnRecyclerView).setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, RecyclerViewActivity.class);
+            startActivity(intent);
+        });
+
+        findViewById(R.id.btnSpinner).setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, SpinnerActivity.class);
+            startActivity(intent);
+        });
+
+        findViewById(R.id.btnNavigationDrawer).setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, com.example.kadyshmandm.NavigationDrawerActivity.class);
+            startActivity(intent);
+        });
+
+        findViewById(R.id.btnBottomBar).setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, BottomBarActivity.class);
+            startActivity(intent);
+        });
+
         findViewById(R.id.btnSendDeclarative).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

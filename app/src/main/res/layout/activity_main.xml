@@ -79,16 +79,74 @@
         android:padding="12dp"
         android:layout_marginBottom="16dp"/>
 
+
     <Button
-        android:id="@+id/btnSendProgrammatic"
+        android:id="@+id/btnNavigationDrawer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/btn_programmatic"
-        android:onClick="sendMessageProgrammatic"
-        android:backgroundTint="@color/primary_color"
-        android:textColor="@color/button_text"
-        android:layout_marginBottom="8dp"/>
+        android:text="📱 Navigation Drawer + Фрагменты"
+        android:layout_marginTop="1dp"/>
+    <Button
+        android:id="@+id/btnSpinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="📍 Spinner: Выбор города"
+        android:layout_marginTop="1dp"/>
+    <Button
+        android:id="@+id/btnBottomBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="📱 BottomBar + ActionBar + Фрагменты"
+        android:layout_marginTop="1dp"/>
 
+
+    <Button
+        android:id="@+id/btnRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="📋 RecyclerView: Товары с картинками"
+        android:layout_marginTop="1dp"/>
+    <Button
+        android:id="@+id/btnContainerViewFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Фрагменты: FragmentContainerView"
+        android:layout_marginTop="1dp"/>
+    <Button
+        android:id="@+id/btnScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="📜 ScrollView + EditText"
+        android:layout_marginTop="1dp"/>
+    <Button
+        android:id="@+id/btnCategoryList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="📦 ListView: Категории продуктов"
+        android:layout_marginTop="1dp"/>
+    <Button
+    android:id="@+id/btnSendProgrammatic"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="@string/btn_programmatic"
+    android:onClick="sendMessageProgrammatic"
+    android:backgroundTint="@color/primary_color"
+    android:textColor="@color/button_text"
+    android:layout_marginBottom="1dp"/>
+    <Button
+    android:id="@+id/btnToLinear"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="Перейти к LinearLayout"
+    android:backgroundTint="@color/primary_color"
+    android:textColor="@color/button_text"
+    android:layout_marginTop="1dp"/>
+    <Button
+        android:id="@+id/btnStartChain"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Начать цепочку (3 Activity)"
+        android:layout_marginTop="1dp"/>
     <Button
         android:id="@+id/btnSendDeclarative"
         android:layout_width="match_parent"
@@ -97,38 +155,17 @@
         android:backgroundTint="@color/secondary_color"
         android:textColor="@color/text_primary"/>
     <Button
-        android:id="@+id/btnToLinear"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Перейти к LinearLayout"
-        android:backgroundTint="@color/primary_color"
-        android:textColor="@color/button_text"
-        android:layout_marginTop="14dp"/>
-    <Button
-        android:id="@+id/btnStartChain"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Начать цепочку (3 Activity)"
-        android:layout_marginTop="14dp"/>
-    <Button
-        android:id="@+id/btnStaticFragment"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Фрагменты: Статически"
-        android:layout_marginTop="14dp"/>
+    android:id="@+id/btnStaticFragment"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="Фрагменты: Статически"
+    android:layout_marginTop="1dp"/>
 
     <Button
         android:id="@+id/btnDynamicFragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Фрагменты: Динамически"
-        android:layout_marginTop="8dp"/>
-
-    <Button
-        android:id="@+id/btnContainerViewFragment"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Фрагменты: FragmentContainerView"
-        android:layout_marginTop="8dp"/>
+        android:layout_marginTop="1dp"/>
 
 </LinearLayout>
