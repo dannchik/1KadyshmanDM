@@ -12,9 +12,9 @@ import java.util.List;
 
 public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductViewHolder> {
 
-    private List<ProductItem> productList;
+    private List<com.example.kadyshmandm.ProductItem> productList;
 
-    public ProductAdapter(List<ProductItem> productList) {
+    public ProductAdapter(List<com.example.kadyshmandm.ProductItem> productList) {
         this.productList = productList;
     }
 
@@ -28,7 +28,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
 
     @Override
     public void onBindViewHolder(@NonNull ProductViewHolder holder, int position) {
-        ProductItem item = productList.get(position);
+        com.example.kadyshmandm.ProductItem item = productList.get(position);
         holder.textViewName.setText(item.getName());
         holder.textViewDescription.setText(item.getDescription());
         holder.imageView.setImageResource(item.getImageResId());
