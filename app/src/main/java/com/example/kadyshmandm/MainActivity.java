@@ -7,6 +7,7 @@ import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -56,6 +57,13 @@ public class MainActivity extends AppCompatActivity
     private ImageView imageApi;
     private Calendar calendar;
     private Handler handler;
+    private EditText editUsername;
+    private TextView textPrefsResult;
+    private static final String PREFS_NAME = "UserPrefs";
+    private static final String KEY_USERNAME = "username";
+    private DatabaseHelper dbHelper;
+    private EditText editItemTitle, editItemDescription, editItemValue, editItemCategory, editDeleteId;
+    private TextView textDbResult, textDbList;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -305,15 +313,13 @@ public class MainActivity extends AppCompatActivity
                             if (workInfo.getState() == WorkInfo.State.SUCCEEDED) {
                                 String imageUrl = workInfo.getOutputData().getString("image_url");
 
-                                // 🔹 ВСТАВЬ ПРОВЕРКУ СЮДА (после получения imageUrl)
                                 if (imageUrl.endsWith(".mp4") || imageUrl.endsWith(".webm")) {
-                                    textWorkStatus.setText(" API вернул видео, а не картинку");
+                                    textWorkStatus.setText("❌ API вернул видео, а не картинку");
                                     Toast.makeText(this, "Попробуй ещё раз — пришло видео", Toast.LENGTH_SHORT).show();
-                                    return; // Прерываем загрузку
+                                    return;
                                 }
-                                // 🔹 КОНЕЦ ПРОВЕРКИ
 
-                                textWorkStatus.setText("API: загрузка завершена");
+                                textWorkStatus.setText("✅ API: загрузка завершена");
 
                                 new Thread(() -> {
                                     try {
@@ -341,6 +347,190 @@ public class MainActivity extends AppCompatActivity
 
             WorkManager.getInstance(this).enqueue(apiWork);
         });
+
+        // 🔹 SharedPreferences
+        editUsername = findViewById(R.id.editUsername);
+        textPrefsResult = findViewById(R.id.textPrefsResult);
+
+        findViewById(R.id.btnSavePrefs).setOnClickListener(v -> {
+            String username = editUsername.getText().toString().trim();
+            if (username.isEmpty()) {
+                Toast.makeText(this, "Введите имя!", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            SharedPreferences prefs = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
+            SharedPreferences.Editor editor = prefs.edit();
+            editor.putString(KEY_USERNAME, username);
+            editor.apply();
+            textPrefsResult.setText("Сохранено: " + username);
+            Toast.makeText(this, "Имя сохранено!", Toast.LENGTH_SHORT).show();
+        });
+
+        findViewById(R.id.btnLoadPrefs).setOnClickListener(v -> {
+            SharedPreferences prefs = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
+            String username = prefs.getString(KEY_USERNAME, "Не найдено");
+            textPrefsResult.setText("Загружено: " + username);
+            if (!"Не найдено".equals(username)) {
+                editUsername.setText(username);
+            }
+            Toast.makeText(this, "Имя загружено!", Toast.LENGTH_SHORT).show();
+        });
+
+        findViewById(R.id.btnUpdatePrefs).setOnClickListener(v -> {
+            SharedPreferences prefs = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
+            String oldUsername = prefs.getString(KEY_USERNAME, null);
+            if (oldUsername == null) {
+                Toast.makeText(this, "Сначала сохраните имя!", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            String newUsername = editUsername.getText().toString().trim();
+            if (newUsername.isEmpty()) {
+                Toast.makeText(this, "Введите новое имя!", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            SharedPreferences.Editor editor = prefs.edit();
+            editor.putString(KEY_USERNAME, newUsername);
+            editor.apply();
+            textPrefsResult.setText("Изменено: " + oldUsername + " → " + newUsername);
+            Toast.makeText(this, "Имя изменено!", Toast.LENGTH_SHORT).show();
+        });
+
+        findViewById(R.id.btnDeletePrefs).setOnClickListener(v -> {
+            new AlertDialog.Builder(this)
+                    .setTitle("Подтверждение")
+                    .setMessage("Удалить сохранённое имя пользователя?")
+                    .setPositiveButton("Да", (dialog, which) -> {
+                        SharedPreferences prefs = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
+                        SharedPreferences.Editor editor = prefs.edit();
+                        editor.remove(KEY_USERNAME);
+                        editor.apply();
+                        editUsername.setText("");
+                        textPrefsResult.setText("Удалено");
+                        Toast.makeText(this, "Имя удалено!", Toast.LENGTH_SHORT).show();
+                    })
+                    .setNegativeButton("Отмена", (dialog, which) -> dialog.dismiss())
+                    .show();
+        });
+
+        // 🔹 База данных (SQLite) - Практика 5, Задание 2
+        dbHelper = new DatabaseHelper(this);
+        editItemTitle = findViewById(R.id.editProductName);
+        editItemDescription = findViewById(R.id.editProductPrice);
+        editItemValue = findViewById(R.id.editProductQty);
+        editItemCategory = findViewById(R.id.editProductCategory);
+        editDeleteId = findViewById(R.id.editDeleteId);
+        textDbResult = findViewById(R.id.textDbResult);
+        textDbList = findViewById(R.id.textDbList);
+
+        // ➕ Добавить запись
+        findViewById(R.id.btnDbAdd).setOnClickListener(v -> {
+            String title = editItemTitle.getText().toString().trim();
+            String desc = editItemDescription.getText().toString().trim();
+            String valueStr = editItemValue.getText().toString().trim();
+            String category = editItemCategory.getText().toString().trim();
+
+            if (title.isEmpty() || valueStr.isEmpty()) {
+                Toast.makeText(this, "Заполните название и значение!", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            try {
+                Item item = new Item(title, desc, Double.parseDouble(valueStr), category);
+                if (dbHelper.addItem(item)) {
+                    textDbResult.setText("Добавлено: " + title);
+                    refreshItemList();
+                    clearItemFields();
+                    Toast.makeText(this, "Запись добавлена!", Toast.LENGTH_SHORT).show();
+                } else {
+                    textDbResult.setText("Ошибка добавления");
+                }
+            } catch (NumberFormatException e) {
+                Toast.makeText(this, "Неверный формат значения!", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        // 🔍 Найти запись
+        findViewById(R.id.btnDbFind).setOnClickListener(v -> {
+            String title = editItemTitle.getText().toString().trim();
+            if (title.isEmpty()) {
+                Toast.makeText(this, "Введите название для поиска!", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            Item item = dbHelper.findItem(title);
+            if (item != null) {
+                editItemDescription.setText(item.getDescription());
+                editItemValue.setText(String.valueOf(item.getValue()));
+                editItemCategory.setText(item.getCategory());
+                textDbResult.setText("Найдено: " + item.toString());
+            } else {
+                textDbResult.setText("Не найдено: " + title);
+            }
+        });
+
+        // ✏️ Изменить запись
+        findViewById(R.id.btnDbUpdate).setOnClickListener(v -> {
+            String title = editItemTitle.getText().toString().trim();
+            if (title.isEmpty()) {
+                Toast.makeText(this, "Введите название!", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            Item existing = dbHelper.findItem(title);
+            if (existing == null) {
+                Toast.makeText(this, "Запись не найдена!", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            String newDesc = editItemDescription.getText().toString().trim();
+            String newValueStr = editItemValue.getText().toString().trim();
+            String newCategory = editItemCategory.getText().toString().trim();
+
+            try {
+                if (dbHelper.updateItem(existing.getId(), title, newDesc,
+                        Double.parseDouble(newValueStr), newCategory)) {
+                    textDbResult.setText("Обновлено: " + title);
+                    refreshItemList();
+                    Toast.makeText(this, "Запись обновлена!", Toast.LENGTH_SHORT).show();
+                } else {
+                    textDbResult.setText("Ошибка обновления");
+                }
+            } catch (NumberFormatException e) {
+                Toast.makeText(this, "Неверный формат значения!", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        // 🗑️ Удалить запись по ID
+        findViewById(R.id.btnDbDelete).setOnClickListener(v -> {
+            String idStr = editDeleteId.getText().toString().trim();
+            if (idStr.isEmpty()) {
+                Toast.makeText(this, "Введите ID для удаления!", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            new AlertDialog.Builder(this)
+                    .setTitle("🗑️ Подтверждение")
+                    .setMessage("Удалить запись с ID=" + idStr + "?")
+                    .setPositiveButton("Да", (dialog, which) -> {
+                        try {
+                            if (dbHelper.deleteItem(Integer.parseInt(idStr))) {
+                                textDbResult.setText("Удалено ID=" + idStr);
+                                refreshItemList();
+                                editDeleteId.setText("");
+                                Toast.makeText(this, "Запись удалена!", Toast.LENGTH_SHORT).show();
+                            } else {
+                                textDbResult.setText("Не найдено ID=" + idStr);
+                            }
+                        } catch (NumberFormatException e) {
+                            Toast.makeText(this, "Неверный формат ID!", Toast.LENGTH_SHORT).show();
+                        }
+                    })
+                    .setNegativeButton("Отмена", (dialog, which) -> dialog.dismiss())
+                    .show();
+        });
+
+        // Загрузить список при старте
+        refreshItemList();
     }
 
     @Override
@@ -400,5 +590,26 @@ public class MainActivity extends AppCompatActivity
         if (textDateTime != null) {
             textDateTime.setText("Custom Dialog: " + text);
         }
+    }
+
+    // 🔹 Вспомогательные методы для БД
+    private void refreshItemList() {
+        List<Item> items = dbHelper.getAllItems();
+        if (items.isEmpty()) {
+            textDbList.setText("Список пуст");
+        } else {
+            StringBuilder sb = new StringBuilder();
+            for (Item i : items) {
+                sb.append("[").append(i.getId()).append("] ").append(i.toString()).append("\n");
+            }
+            textDbList.setText(sb.toString());
+        }
+    }
+
+    private void clearItemFields() {
+        editItemTitle.setText("");
+        editItemDescription.setText("");
+        editItemValue.setText("");
+        editItemCategory.setText("");
     }
 }

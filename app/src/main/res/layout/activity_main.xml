@@ -84,6 +84,210 @@
             android:padding="12dp"
             android:layout_marginBottom="16dp"/>
 
+        <!-- Разделитель: Практика 5: SharedPreferences -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="🔐 Практика 5: SharedPreferences"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@color/primary_color"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="8dp"/>
+
+        <EditText
+            android:id="@+id/editUsername"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Введите имя пользователя"
+            android:inputType="textPersonName"
+            android:background="@color/input_background"
+            android:padding="12dp"
+            android:layout_marginBottom="8dp"/>
+
+        <Button
+            android:id="@+id/btnSavePrefs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="💾 Сохранить имя"
+            android:backgroundTint="@color/primary_color"
+            android:layout_marginBottom="8dp"/>
+
+        <Button
+            android:id="@+id/btnLoadPrefs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="📥 Загрузить имя"
+            android:backgroundTint="@color/primary_color"
+            android:layout_marginBottom="8dp"/>
+
+        <Button
+            android:id="@+id/btnUpdatePrefs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="✏️ Изменить имя"
+            android:backgroundTint="@color/primary_color"
+            android:layout_marginBottom="8dp"/>
+
+        <Button
+            android:id="@+id/btnDeletePrefs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="🗑️ Удалить имя"
+            android:backgroundTint="@color/error_color"
+            android:layout_marginBottom="8dp"/>
+
+        <TextView
+            android:id="@+id/textPrefsResult"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Результат: —"
+            android:textSize="16sp"
+            android:textColor="@color/text_primary"
+            android:layout_marginTop="16dp"
+            android:gravity="center"/>
+
+        <!-- Разделитель: Практика 5: База данных (SQLite) -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="🗄️ Практика 5: База данных (SQLite)"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@color/primary_color"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="8dp"/>
+
+        <EditText
+            android:id="@+id/editProductName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Название товара"
+            android:inputType="text"
+            android:background="@color/input_background"
+            android:padding="12dp"
+            android:layout_marginBottom="4dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="4dp">
+
+            <EditText
+                android:id="@+id/editProductPrice"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="Цена"
+                android:inputType="numberDecimal"
+                android:background="@color/input_background"
+                android:padding="12dp"/>
+
+            <EditText
+                android:id="@+id/editProductQty"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="Кол-во"
+                android:inputType="number"
+                android:background="@color/input_background"
+                android:padding="12dp"
+                android:layout_marginStart="4dp"/>
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/editProductCategory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Категория"
+            android:inputType="text"
+            android:background="@color/input_background"
+            android:padding="12dp"
+            android:layout_marginBottom="8dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="8dp">
+
+            <Button
+                android:id="@+id/btnDbAdd"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="➕ Добавить"
+                android:backgroundTint="@color/primary_color"
+                android:layout_marginEnd="4dp"/>
+
+            <Button
+                android:id="@+id/btnDbFind"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="🔍 Найти"
+                android:backgroundTint="@color/primary_color"
+                android:layout_marginEnd="4dp"/>
+
+            <Button
+                android:id="@+id/btnDbUpdate"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="✏️ Изменить"
+                android:backgroundTint="@color/primary_color"/>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnDbDelete"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="🗑️ Удалить по ID"
+            android:backgroundTint="@color/error_color"
+            android:layout_marginBottom="8dp"/>
+
+        <EditText
+            android:id="@+id/editDeleteId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="ID для удаления"
+            android:inputType="number"
+            android:background="@color/input_background"
+            android:padding="12dp"
+            android:layout_marginBottom="8dp"/>
+
+        <TextView
+            android:id="@+id/textDbResult"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Результат: —"
+            android:textSize="14sp"
+            android:textColor="@color/text_primary"
+            android:layout_marginBottom="8dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="📋 Все товары:"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="4dp"/>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:background="@color/input_background"
+            android:padding="8dp">
+
+            <TextView
+                android:id="@+id/textDbList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Список пуст"
+                android:textSize="14sp"/>
+        </ScrollView>
+
         <Button
             android:id="@+id/btnSendProgrammatic"
             android:layout_width="match_parent"
