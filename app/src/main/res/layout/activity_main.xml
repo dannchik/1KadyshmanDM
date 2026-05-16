@@ -84,6 +84,456 @@
             android:padding="12dp"
             android:layout_marginBottom="16dp"/>
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Практика 6: WebView"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@color/primary_color"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp"/>
+
+        <WebView
+            android:id="@+id/webView"
+            android:layout_width="match_parent"
+            android:layout_height="800dp"
+            android:background="@color/input_background"
+            android:layout_marginBottom="8dp"/>
+
+        <Button
+            android:id="@+id/btnLoadWeb"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Открыть сайт"
+            android:backgroundTint="@color/primary_color"
+            android:layout_marginBottom="8dp"/>
+
+        <EditText
+            android:id="@+id/editWebUrl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Введите URL (по умолчанию: https://online-edu.mirea.ru)"
+            android:inputType="textUri"
+            android:background="@color/input_background"
+            android:padding="12dp"
+            android:layout_marginBottom="8dp"/>
+
+        <TextView
+            android:id="@+id/textWebStatus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Статус: —"
+            android:textSize="14sp"
+            android:textColor="@color/text_primary"
+            android:layout_marginBottom="16dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Практика 6: MediaPlayer"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@color/primary_color"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp"/>
+
+        <TextView
+            android:id="@+id/textMediaStatus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Статус: —"
+            android:textSize="14sp"
+            android:textColor="@color/text_primary"
+            android:layout_marginBottom="8dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="8dp">
+
+            <Button
+                android:id="@+id/btnPlay"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Play"
+                android:backgroundTint="@color/primary_color"
+                android:layout_marginEnd="4dp"/>
+
+            <Button
+                android:id="@+id/btnPause"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Pause"
+                android:backgroundTint="@color/primary_color"
+                android:layout_marginEnd="4dp"/>
+
+            <Button
+                android:id="@+id/btnStop"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Stop"
+                android:backgroundTint="@color/error_color"/>
+        </LinearLayout>
+
+        <SeekBar
+            android:id="@+id/seekBarMedia"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"/>
+
+        <TextView
+            android:id="@+id/textMediaTime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="0:00 / 0:00"
+            android:textSize="12sp"
+            android:textColor="@color/text_secondary"
+            android:gravity="center"
+            android:layout_marginBottom="16dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Практика 6: Анимации"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@color/primary_color"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="8dp"/>
+
+        <ImageView
+            android:id="@+id/imageAnim"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/enot"
+            android:contentDescription="Анимируемый элемент"
+            android:layout_gravity="center"
+            android:layout_marginBottom="16dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="8dp">
+
+            <Button
+                android:id="@+id/btnAnimRotate"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Вращение"
+                android:backgroundTint="@color/primary_color"
+                android:layout_marginEnd="4dp"/>
+
+            <Button
+                android:id="@+id/btnAnimMove"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Перемещение"
+                android:backgroundTint="@color/primary_color"
+                android:layout_marginEnd="4dp"/>
+
+            <Button
+                android:id="@+id/btnAnimScale"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Масштаб"
+                android:backgroundTint="@color/primary_color"/>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnAnimReset"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Сброс"
+            android:backgroundTint="@color/error_color"
+            android:layout_marginBottom="16dp"/>
+
+        <!-- Разделитель: Практика 6: Уведомления -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Практика 6: Уведомления"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@color/primary_color"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="8dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="8dp">
+
+            <Button
+                android:id="@+id/btnNotifyNow"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Сейчас"
+                android:backgroundTint="@color/primary_color"
+                android:layout_marginEnd="4dp"/>
+
+            <Button
+                android:id="@+id/btnNotifyDelayed"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Через 10 сек"
+                android:backgroundTint="@color/primary_color"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textNotifyStatus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Статус: —"
+            android:textSize="14sp"
+            android:textColor="@color/text_primary"
+            android:layout_marginBottom="16dp"/>
+
+        <!-- Разделитель: Практика 6: JSON -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Практика 6: JSON + Gson"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@color/primary_color"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="8dp"/>
+
+        <EditText
+            android:id="@+id/editJsonName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Имя"
+            android:inputType="textPersonName"
+            android:background="@color/input_background"
+            android:padding="12dp"
+            android:layout_marginBottom="4dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="4dp">
+
+            <EditText
+                android:id="@+id/editJsonAge"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="Возраст"
+                android:inputType="number"
+                android:background="@color/input_background"
+                android:padding="12dp"/>
+
+            <EditText
+                android:id="@+id/editJsonRating"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="Рейтинг"
+                android:inputType="numberDecimal"
+                android:background="@color/input_background"
+                android:padding="12dp"
+                android:layout_marginStart="4dp"/>
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/editJsonEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Email"
+            android:inputType="textEmailAddress"
+            android:background="@color/input_background"
+            android:padding="12dp"
+            android:layout_marginBottom="4dp"/>
+
+        <EditText
+            android:id="@+id/editJsonCity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Город"
+            android:inputType="text"
+            android:background="@color/input_background"
+            android:padding="12dp"
+            android:layout_marginBottom="8dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="8dp">
+
+            <Button
+                android:id="@+id/btnJsonSerialize"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="В JSON"
+                android:backgroundTint="@color/primary_color"
+                android:layout_marginEnd="4dp"/>
+
+            <Button
+                android:id="@+id/btnJsonDeserialize"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Из JSON"
+                android:backgroundTint="@color/primary_color"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textJsonResult"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Результат: —"
+            android:textSize="12sp"
+            android:textColor="@color/text_primary"
+            android:background="@color/input_background"
+            android:padding="8dp"
+            android:layout_marginBottom="8dp"
+            android:maxLines="5"
+            android:scrollbars="vertical"/>
+
+        <Button
+            android:id="@+id/btnJsonSaveFile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Сохранить в файл"
+            android:backgroundTint="@color/primary_color"
+            android:layout_marginBottom="8dp"/>
+
+        <Button
+            android:id="@+id/btnJsonLoadFile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Загрузить из файла"
+            android:backgroundTint="@color/primary_color"
+            android:layout_marginBottom="16dp"/>
+
+        <!-- Разделитель: Практика 6: Content Provider -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Практика 6: Content Provider"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@color/primary_color"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="8dp"/>
+
+        <EditText
+            android:id="@+id/editBookTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Название книги"
+            android:inputType="text"
+            android:background="@color/input_background"
+            android:padding="12dp"
+            android:layout_marginBottom="4dp"/>
+
+        <EditText
+            android:id="@+id/editBookAuthor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Автор"
+            android:inputType="textPersonName"
+            android:background="@color/input_background"
+            android:padding="12dp"
+            android:layout_marginBottom="4dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="4dp">
+
+            <EditText
+                android:id="@+id/editBookYear"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="Год"
+                android:inputType="number"
+                android:background="@color/input_background"
+                android:padding="12dp"/>
+
+            <EditText
+                android:id="@+id/editBookPrice"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="Цена"
+                android:inputType="numberDecimal"
+                android:background="@color/input_background"
+                android:padding="12dp"
+                android:layout_marginStart="4dp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="8dp">
+
+            <Button
+                android:id="@+id/btnProviderInsert"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Добавить"
+                android:backgroundTint="@color/primary_color"
+                android:layout_marginEnd="4dp"/>
+
+            <Button
+                android:id="@+id/btnProviderQuery"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Запросить"
+                android:backgroundTint="@color/primary_color"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textProviderResult"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Результат: —"
+            android:textSize="12sp"
+            android:textColor="@color/text_primary"
+            android:background="@color/input_background"
+            android:padding="8dp"
+            android:layout_marginBottom="8dp"
+            android:maxLines="5"
+            android:scrollbars="vertical"/>
+
+        <Button
+            android:id="@+id/btnProviderExportJson"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Экспорт в JSON"
+            android:backgroundTint="@color/primary_color"
+            android:layout_marginBottom="8dp"/>
+
+        <Button
+            android:id="@+id/btnProviderImportJson"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Импорт из JSON"
+            android:backgroundTint="@color/primary_color"
+            android:layout_marginBottom="16dp"/>
+
         <!-- Разделитель: Практика 5: SharedPreferences -->
         <TextView
             android:layout_width="match_parent"

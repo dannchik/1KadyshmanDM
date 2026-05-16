@@ -1,7 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- === Стандартные разрешения === -->
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM"/>
+
+    <!-- === Использование кастомных разрешений === -->
+    <uses-permission android:name="com.example.kadyshmandm.permission.READ_BOOKS"/>
+    <uses-permission android:name="com.example.kadyshmandm.permission.WRITE_BOOKS"/>
+
+    <!-- === ОБЪЯВЛЕНИЕ кастомных разрешений (ДО <application>!) === -->
+    <permission
+        android:name="com.example.kadyshmandm.permission.READ_BOOKS"
+        android:protectionLevel="normal"/>
+    <permission
+        android:name="com.example.kadyshmandm.permission.WRITE_BOOKS"
+        android:protectionLevel="normal"/>
 
     <application
         android:allowBackup="true"
@@ -13,61 +29,37 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.KadyshmanDM"
         tools:targetApi="31">
+
+        <!-- Сервис -->
         <service
             android:name=".CounterService"
             android:enabled="true"
-            android:exported="true"></service>
+            android:exported="true"/>
 
-        <activity
-            android:name=".SpinnerActivity"
-            android:exported="false" />
-        <activity
-            android:name=".BottomBarActivity"
-            android:exported="false"
-            android:theme="@style/Theme.KadyshmanDM" />
-        <activity
-            android:name=".NavigationDrawerActivity"
-            android:exported="false"
-            android:theme="@style/Theme.KadyshmanDM" />
-        <activity
-            android:name=".RecyclerViewActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ProductsActivity"
-            android:exported="false" />
-        <activity
-            android:name=".CategoryActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ScrollViewActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ContainerViewFragmentActivity"
-            android:exported="false" />
-        <activity
-            android:name=".DynamicFragmentActivity"
-            android:exported="false" />
-        <activity
-            android:name=".StaticFragmentActivity"
-            android:exported="false" />
-        <activity
-            android:name=".Activity3Time"
-            android:exported="false" />
-        <activity
-            android:name=".Activity2Subject"
-            android:exported="false" />
-        <activity
-            android:name=".Activity1NameSurname"
-            android:exported="false" />
+        <!-- Активности -->
+        <activity android:name=".SpinnerActivity" android:exported="false"/>
+        <activity android:name=".BottomBarActivity" android:exported="false" android:theme="@style/Theme.KadyshmanDM"/>
+        <activity android:name=".NavigationDrawerActivity" android:exported="false" android:theme="@style/Theme.KadyshmanDM"/>
+        <activity android:name=".RecyclerViewActivity" android:exported="false"/>
+        <activity android:name=".ProductsActivity" android:exported="false"/>
+        <activity android:name=".CategoryActivity" android:exported="false"/>
+        <activity android:name=".ScrollViewActivity" android:exported="false"/>
+        <activity android:name=".ContainerViewFragmentActivity" android:exported="false"/>
+        <activity android:name=".DynamicFragmentActivity" android:exported="false"/>
+        <activity android:name=".StaticFragmentActivity" android:exported="false"/>
+        <activity android:name=".Activity3Time" android:exported="false"/>
+        <activity android:name=".Activity2Subject" android:exported="false"/>
+        <activity android:name=".Activity1NameSurname" android:exported="false"/>
+
         <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+
         <activity
             android:name=".DisplayMessageActivity"
             android:exported="false"
@@ -76,8 +68,9 @@
             android:theme="@style/Theme.KadyshmanDM">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
+                android:value=".MainActivity"/>
         </activity>
+
         <activity
             android:name=".LinearActivity"
             android:exported="false"
@@ -86,8 +79,9 @@
             android:theme="@style/Theme.KadyshmanDM">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
+                android:value=".MainActivity"/>
         </activity>
+
         <activity
             android:name=".RelativeActivity"
             android:exported="false"
@@ -96,8 +90,9 @@
             android:theme="@style/Theme.KadyshmanDM">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
+                android:value=".MainActivity"/>
         </activity>
+
         <activity
             android:name=".ConstraintActivity"
             android:exported="false"
@@ -106,8 +101,9 @@
             android:theme="@style/Theme.KadyshmanDM">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
+                android:value=".MainActivity"/>
         </activity>
+
         <activity
             android:name=".FrameActivity"
             android:exported="false"
@@ -116,8 +112,24 @@
             android:theme="@style/Theme.KadyshmanDM">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
+                android:value=".MainActivity"/>
         </activity>
-    </application>
 
+        <!-- === Компоненты внутри <application> === -->
+
+        <!-- Приемник для отложенных уведомлений -->
+        <receiver
+            android:name=".AlarmReceiver"
+            android:exported="false"/>
+
+        <!-- Провайдер контента для обмена книгами -->
+        <provider
+            android:name=".BookProvider"
+            android:authorities="com.example.kadyshmandm.provider"
+            android:exported="true"
+            android:readPermission="com.example.kadyshmandm.permission.READ_BOOKS"
+            android:writePermission="com.example.kadyshmandm.permission.WRITE_BOOKS"
+            android:grantUriPermissions="true"/>
+
+    </application>
 </manifest>
